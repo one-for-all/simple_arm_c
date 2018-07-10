@@ -1,11 +1,13 @@
 #include "ros/ros.h"
 #include "std_msgs/Float64.h"
+#include <iostream>
 #include <math.h>
+
+using namespace std;
 
 int main(int argc, char **argv)
 {
-	
-  
+
   ros::init(argc, argv, "simple_mover");
 
   ros::NodeHandle n1,n2;
@@ -31,6 +33,7 @@ int main(int argc, char **argv)
     std_msgs::Float64 joint1_angle, joint2_angle;
     joint1_angle.data=sin(2*M_PI*0.1*elapsed)*(M_PI/2);
     joint2_angle.data=sin(2*M_PI*0.1*elapsed)*(M_PI/2);
+    cout  << "I should be rotating" << endl;
 
 	joint1_pub.publish(joint1_angle);
 	joint2_pub.publish(joint2_angle);
